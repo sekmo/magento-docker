@@ -1,0 +1,19 @@
+web:
+  image: sekmo/magento
+  ports:
+    - "80:80"
+  links:
+    - mysql
+  env_file:
+    - env
+  volumes:
+    - ./htdocs:/var/www/htdocs
+    - ./usr_local_etc_php:/usr/local/etc/php
+mysql:
+  image: mysql:5.6.23
+  ports:
+    - "3306:3306"
+  volumes:
+    - ./mysql:/var/lib/mysql
+  env_file:
+    - env
